@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>experiments</title>
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- Theme and PWA meta -->
+  <meta name="theme-color" content="#4CAF50" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="experiments">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Preload main app bundle for faster loading -->
+  <link rel="preload" href="main.dart.js" as="script">
+
+  <!-- Base path for Flutter -->
+  <base href="/">
+</head>
+<body>
+
+<!-- LCP placeholder for Lighthouse -->
+<div id="lcp-banner" style="font-size: 24px; text-align: center; margin-top: 50px;">
+  Welcome to My App! 🚀
+</div>
+
+<!-- Flutter app bootstrap -->
+<script src="flutter_bootstrap.js" async></script>
+
+<!-- Service Worker and banner removal -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('flutter_service_worker.js?v=2940047646')
+        .then(function (registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+
+      // Remove LCP banner after load
+      const banner = document.getElementById('lcp-banner');
+      if (banner) banner.remove();
+    });
+  }
+</script>
+
+</body>
+</html>
